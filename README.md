@@ -1,4 +1,4 @@
-# Competitive Programming in C++
+# Competitive Programming in C++ ( ͝° ͜ʖ͡°)
 
 <img src="cp.png" />
 
