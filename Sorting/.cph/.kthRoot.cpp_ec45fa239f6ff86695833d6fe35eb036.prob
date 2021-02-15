@@ -1,0 +1,1 @@
+{"name":"Local: kthRoot","url":"/home/proghead00/Desktop/C++/Sorting/kthRoot.cpp","tests":[{"id":1613405224337,"input":"2\n10 1\n1000000000000000 10","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/proghead00/Desktop/C++/Sorting/kthRoot.cpp","group":"local","local":true}

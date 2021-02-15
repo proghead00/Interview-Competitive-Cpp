@@ -1,0 +1,1 @@
+{"name":"Local: stringSort","url":"/home/proghead00/Desktop/C++/Sorting/stringSort.cpp","tests":[{"id":1613390222350,"input":"bat\nbatman\napple","output":"apple\nbatman\nbat"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/proghead00/Desktop/C++/Sorting/stringSort.cpp","group":"local","local":true}
