@@ -31,7 +31,7 @@ int main()
             s = mid + 1;
     }
 
-    // e-1 (or s-1) if we want the HIGHEST ELEMENT before the dropped
+    // e-1 (or s-1) if we want the HIGHEST ELEMENT before the drop
     // e (or s) if we want the MINIMUM ELEMENT making the drop
     cout << e - 1 << endl;
 }
