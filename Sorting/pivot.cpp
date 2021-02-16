@@ -30,5 +30,8 @@ int main()
         else if (arr[mid] > arr[e])
             s = mid + 1;
     }
-    cout << arr[e] << endl;
+
+    // e-1 (or s-1) if we want the HIGHEST ELEMENT before the dropped
+    // e (or s) if we want the MINIMUM ELEMENT making the drop
+    cout << e - 1 << endl;
 }
