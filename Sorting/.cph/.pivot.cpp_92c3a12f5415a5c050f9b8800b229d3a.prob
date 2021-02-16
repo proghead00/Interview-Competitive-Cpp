@@ -1,0 +1,1 @@
+{"name":"Local: pivot","url":"/home/proghead00/Desktop/C++/Sorting/pivot.cpp","tests":[{"id":1613497064750,"input":"5\n4\n5\n1\n2\n3","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/proghead00/Desktop/C++/Sorting/pivot.cpp","group":"local","local":true}
