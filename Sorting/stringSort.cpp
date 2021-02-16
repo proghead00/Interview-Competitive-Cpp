@@ -1,72 +1,63 @@
-
 #include <iostream>
 #include <string>
 using namespace std;
 
-int compareTo(string s1, string s2)
+void sort(string a[], int n)
 {
-
-    int i = 0;
-
-    while (i < s1.length() && i < s2.length())
+    for (int i = 0; i < n - 1; i++)
     {
-
-        if (s1[i] > s2[i])
+        for (int j = 0; j < n - 1 - i; j++)
         {
 
-            return 1;
-        }
-        else if (s1[i] < s2[i])
-        {
-            return -1;
-        }
-        i++;
-    }
-
-    if (s1.length() > s2.length())
-    {
-        return -1;
-    }
-    else
-    {
-        return 1;
-    }
-}
-
-void bsort(string arr[], int n)
-{
-    for (int i = 0; i < n; i++)
-    {
-
-        for (int j = 0; j < n - i - 1; j++)
-        {
-            if (compareTo(arr[j], arr[j + 1]) > 0)
+            if (a[j] > a[j + 1])
             {
-
-                string temp = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = temp;
+                string t = a[j];
+                a[j] = a[j + 1];
+                a[j + 1] = t;
             }
         }
     }
 }
 
+void substring(string s[], int n)
+{
+
+    for (int i = 0; i < n; i++)
+    {
+        if (s[i + 1].find(s[i]) != string::npos)
+        {
+            if (s[i + 2].find(s[i + 1]) != string::npos)
+            {
+                string t = s[i + 1];
+                s[i + 1] = s[i + 2];
+                s[i + 2] = t;
+            }
+
+            string t = s[i];
+            s[i] = s[i + 1];
+            s[i + 1] = t;
+        }
+    }
+}
 int main()
 {
     int n;
+
     cin >> n;
 
-    string s[1000];
+    string s[n];
 
     for (int i = 0; i < n; i++)
     {
         cin >> s[i];
     }
 
-    bsort(s, n);
+    sort(s, n);
 
-    for (size_t i = 0; i < n; i++)
+    substring(s, n);
+
+    for (int i = 0; i < n; i++)
     {
-        cout << s[i] << " ";
+        cout << s[i] << endl;
     }
 }
