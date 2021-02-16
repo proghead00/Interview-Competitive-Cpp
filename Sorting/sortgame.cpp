@@ -6,9 +6,9 @@ using namespace std;
 bool myCompare(pair<string, int> a, pair<string, int> b)
 {
     if (a.second == b.second)
-        return a.first < b.first;
+        return a.first < b.first; // names in lexicographic order when salaries are equal
 
-    return a.second > b.second;
+    return a.second > b.second; // descending
 }
 
 int main()
@@ -19,8 +19,8 @@ int main()
     cin >> n;
     for (i = 0; i < n; i++)
     {
-        cin >> a[i].first;
-        cin >> a[i].second;
+        cin >> a[i].first;  // employee name i/p
+        cin >> a[i].second; // salary i/p
     }
     sort(a, a + n, myCompare);
 

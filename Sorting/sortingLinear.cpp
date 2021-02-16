@@ -30,7 +30,6 @@ void sort012(int a[], int arr_size)
 }
 int main(int argc, char const *argv[])
 {
-    /* code */
     int n;
     cin >> n;
     int arr[n];
