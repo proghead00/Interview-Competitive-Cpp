@@ -1,0 +1,1 @@
+{"name":"Local: TOTSCR","url":"/home/proghead00/Desktop/C++/CCRC21C/TOTSCR.cpp","tests":[{"id":1614185361502,"input":"3\n2 2\n1 2\n01\n10\n2 2\n1 2\n11\n00\n2 1\n100\n0\n1","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/proghead00/Desktop/C++/CCRC21C/TOTSCR.cpp","group":"local","local":true}

@@ -13,13 +13,15 @@ void sieve()
     // set all bits
     b.set(); //1,1,1,1,1,...
 
-    b[0] = b[1] = 0;
+    b[0] = b[1] = 0; // since they're not primes
 
     for (long long int i = 2; i <= n; i++)
     {
         if (b[i])
         {
             primes.push_back(i);
+
+            // make multiples of the current prime 0
             for (long long int j = i * i; j <= n; j = j + i)
             {
                 b[j] = 0;

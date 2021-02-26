@@ -54,6 +54,14 @@ int clear_i_to_j(int n, int i, int j)
     return ans;
 }
 
+int count_set_bits(int n)
+{
+    while (n > 0)
+    {
+        /* code */
+    }
+}
+
 int main()
 {
 
