@@ -1,0 +1,1 @@
+{"name":"Local: primeFactors","url":"/home/proghead00/Desktop/C++/Number Theory/primeFactors.cpp","tests":[{"id":1614353416734,"input":"2\n10\n24","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/proghead00/Desktop/C++/Number Theory/primeFactors.cpp","group":"local","local":true}

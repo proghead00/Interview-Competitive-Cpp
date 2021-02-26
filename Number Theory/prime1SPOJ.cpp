@@ -10,6 +10,9 @@ vector<int> primes; //will store prime nos. -> 2,3,5,7,...
 
 int p[N] = {0};
 
+// 0 -> not prime
+// 1 -> prime
+
 void sieve()
 {
 
