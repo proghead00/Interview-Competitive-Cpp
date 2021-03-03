@@ -67,19 +67,6 @@ int main()
                 }
             }
 
-            // getline(cin, L);
-
-            // cout << L << endl;
-
-            // getline(cin, R);
-            // cout << R << endl;
-            // cin >> L >> R;
-            // getline(cin, L);
-
-            // getline(cin, R);
-            // L -> 12:45 PM
-            // l2 -> 1245
-
             //   L:
             hrL = (10 * (L[0] - '0')) + (L[1] - '0');
 
@@ -122,26 +109,6 @@ int main()
                 }
             }
 
-            // L <= P <= R
-
-            // if (hrL <= hrP)
-            // {
-            //     if (hrP <= hrR)
-            //     {
-            //         if (minL <= minP)
-            //         {
-            //             if (minP <= minR)
-            //             {
-            //                 // output += "1";
-            //                 output.push_back('1');
-            //             }
-            //         }
-            //     }
-            // }
-            // else
-            //     // output += "0";
-            //     output.push_back('0');
-
             L = "";
             R = "";
 
@@ -151,8 +118,6 @@ int main()
             else if ((hrL == hrP && minL > minP) || (hrR == hrP && minR < minP))
                 output.push_back('0');
 
-            // else if (hrR == hrP && minR < minP)
-            //     output.push_back('0');
             else
                 output.push_back('1');
             N--;

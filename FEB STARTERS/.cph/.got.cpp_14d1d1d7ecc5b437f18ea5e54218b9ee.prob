@@ -1,0 +1,1 @@
+{"name":"Local: got","url":"/home/proghead00/Desktop/C++/FEB STARTERS/got.cpp","tests":[{"id":1614524127838,"input":"2\n1\n10\n5 11 11 11 11 11\n5\n10 10 10 10 10\n1 11\n1 11\n1 11\n1 11\n1 11","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/proghead00/Desktop/C++/FEB STARTERS/got.cpp","group":"local","local":true}

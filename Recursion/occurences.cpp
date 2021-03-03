@@ -45,6 +45,35 @@ int last_occ(int *a, int n, int key)
 
     return i + 1;
 }
+
+void all_occurences(int *a, int i, int n, int key)
+{
+    if (i == n)
+        return;
+
+    if (a[i] == key)
+    {
+        cout << i << " ";
+    }
+
+    all_occurences(a, i + 1, n, key);
+}
+
+int store_occurences(int *a, int i, int n, int key, int *out, int j)
+{
+    if (i == n)
+    {
+        return j;
+    }
+
+    if (a[i] == key)
+    {
+        out[j] = i;
+        return store_occurences(a, i + 1, n, key, out, j);
+    }
+    return store_occurences(a, i + 1, n, key, out, j);
+}
+
 int main()
 {
     int n;
