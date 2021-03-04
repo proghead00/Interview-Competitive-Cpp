@@ -1,62 +1,62 @@
 #include <iostream>
 using namespace std;
 
-void merge(int *a, int s, int e)
+int merge(int *a, int s, int e)
 {
-    int mid = s + (e - s) / 2;
-
+    int mid = s + (s + e) / 2;
     int i = s;
     int j = mid + 1;
 
     int k = s;
 
-    int temp[100000];
+    int temp[100000000];
+    int c = 0;
 
     while (i <= mid && j <= e)
     {
-        if (a[i] < a[j])
+        if (a[i] <= a[j])
         {
             temp[k++] = a[i++];
         }
-
         else
+        {
             temp[k++] = a[j++];
+
+            // if the numbers aren't in sorted order
+            c += mid - i + 1;
+        }
     }
 
     while (i <= mid)
     {
         temp[k++] = a[i++];
     }
-
     while (j <= e)
     {
         temp[k++] = a[j++];
     }
 
-    // copying to og array
     for (size_t i = s; i <= e; i++)
     {
         a[i] = temp[i];
     }
+
+    return c;
 }
 
-void ms(int *a, int s, int e)
+int inv(int *a, int s, int e)
 {
-    //1. base case
     if (s >= e)
-    {
-        return;
-    }
+        return 0;
 
-    //2. divide
-    int mid = s + (e - s) / 2;
+    int mid = (s + e) / 2;
 
-    // recursively sort
-    ms(a, s, mid);
-    ms(a, mid + 1, e);
+    int x = inv(a, s, mid);     // no of inv in first half
+    int y = inv(a, mid + 1, e); // second half
 
-    // merge 2 arrays
-    merge(a, s, e);
+    int z = merge(a, s, e); // cross inv
+
+    return x + y + z;
 }
 
 int main()
@@ -69,13 +69,6 @@ int main()
     {
         cin >> a[i];
     }
-    int s = 0;
-    int e = n - 1;
 
-    ms(a, s, e);
-
-    for (size_t i = 0; i < n; i++)
-    {
-        cout << a[i] << " ";
-    }
+    cout << inv(a, 0, n - 1) << endl;
 }
