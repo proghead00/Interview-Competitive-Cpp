@@ -1,0 +1,1 @@
+{"name":"Local: GROUPS2","url":"/home/proghead00/Desktop/C++/GROUPS2.cpp","tests":[{"id":1615011295738,"input":"4\n000\n010\n101\n01011011011110","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/proghead00/Desktop/C++/GROUPS2.cpp","group":"local","local":true}
