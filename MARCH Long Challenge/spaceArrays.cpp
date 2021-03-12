@@ -27,6 +27,7 @@ int main()
         {
             if (a[i] > i + 1)
             {
+
                 f = 1;
                 break;
             }
@@ -41,7 +42,8 @@ int main()
 
         else
         {
-            if ((d % 2) == 1)
+
+            if (d & 1)
                 cout << "First" << endl;
             else
                 cout << "Second" << endl;
