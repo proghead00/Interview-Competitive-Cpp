@@ -37,7 +37,18 @@ void create(Node *&head, int d)
 	return;
 }
 
-Node *append(Node *&head, int k, int n)
+void printapp(Node *r, Node *q)
+{
+
+	while (r != NULL && r != q)
+	{
+		cout << r->data << " ";
+		r = r->next;
+	}
+	// cout << endl;
+}
+
+void append(Node *&head, int k, int n)
 {
 	Node *p = head;
 	int x = 1;
@@ -49,6 +60,7 @@ Node *append(Node *&head, int k, int n)
 			p = p->next;
 		}
 	}
+	Node *r = p->next;
 	Node *q = p->next;
 	p->next = NULL;
 	// Node *r = NULL;
@@ -63,9 +75,12 @@ Node *append(Node *&head, int k, int n)
 	}
 
 	q->next = head;
+
+	printapp(r, q);
 	// return;
-	return q;
+	// return q;
 }
+
 void print(Node *head)
 {
 	while (head != NULL)
@@ -90,8 +105,8 @@ int main()
 
 	print(head);
 
-	// append(head, 3, 7);
-	Node *m = append(head, 3, 7);
-	print(m);
-	// print(head);
+	append(head, 3, 7);
+	// Node *m = append(head, 3, 7);
+	// print(m);
+	print(head);
 }
