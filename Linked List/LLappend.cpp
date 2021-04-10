@@ -37,48 +37,49 @@ void create(Node *&head, int d)
 	return;
 }
 
-void printapp(Node *r, Node *q)
+int length(Node *head)
 {
-
-	while (r != NULL && r != q)
+	int c = 1;
+	while (head != NULL)
 	{
-		cout << r->data << " ";
-		r = r->next;
+		c++;
+		head = head->next;
 	}
-	// cout << endl;
+
+	return c;
 }
 
-void append(Node *&head, int k, int n)
+Node *kAppend(Node *&head, int k)
 {
-	Node *p = head;
-	int x = 1;
-	for (size_t i = 1; i < n - k; i++)
+	k += 1;
+	Node *newHead;
+	Node *newTail;
+	Node *tail = head;
+
+	int l = length(head);
+	k = k % l; // in case k>l
+	int cnt = 1;
+
+	while (tail->next != NULL)
 	{
-		if (p->next != NULL)
+		if (cnt == l - k)
 		{
-			x++;
-			p = p->next;
+			newTail = tail;
 		}
-	}
-	Node *r = p->next;
-	Node *q = p->next;
-	p->next = NULL;
-	// Node *r = NULL;
 
-	for (size_t i = x + 1; i < n; i++)
-	{
-		if (q->next != NULL)
+		if (cnt == l - k + 1)
 		{
-			// r = q;
-			q = q->next;
+			newHead = tail;
 		}
+
+		tail = tail->next;
+		cnt++;
 	}
 
-	q->next = head;
+	newTail->next = NULL;
+	tail->next = head;
 
-	printapp(r, q);
-	// return;
-	// return q;
+	return newHead;
 }
 
 void print(Node *head)
@@ -105,8 +106,7 @@ int main()
 
 	print(head);
 
-	append(head, 3, 7);
-	// Node *m = append(head, 3, 7);
-	// print(m);
-	print(head);
+	Node *newHead = kAppend(head, 3);
+
+	print(newHead);
 }
