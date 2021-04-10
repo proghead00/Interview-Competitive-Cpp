@@ -133,14 +133,11 @@ int main()
 	Node *head2 = NULL;
 	create(head2, 9);
 	create(head2, 10);
-	// create(head2, 6);
 
 	makeIntersection(head1, head2, 3);
 
 	print(head1);
 	print(head2);
-
-	// int diff = abs(len(head1) - len(head2));
 
 	int p = intersection(head1, head2);
 
