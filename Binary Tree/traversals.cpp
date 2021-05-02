@@ -35,7 +35,20 @@ node *buildTree()
     return root;
 }
 
-void print(node *root)
+void printInorder(node *root)
+{
+    if (root == NULL)
+    {
+        return;
+    }
+
+    printInorder(root->left);
+    cout << root->data << " ";
+    printInorder(root->left);
+}
+
+void printPreorder(node *root)
+
 {
     if (root == NULL)
     {
@@ -44,12 +57,37 @@ void print(node *root)
 
     // otherwise, print root first followed by subtrees(chilren)
     cout << root->data << " ";
-    print(root->left);
-    print(root->right);
+    printPreorder(root->left);
+    printPreorder(root->right);
+}
+
+void printPostorder(node *root)
+{
+    if (root == NULL)
+    {
+        return;
+    }
+    printPostorder(root->left);
+    printPostorder(root->left);
+    cout << root->data << " ";
 }
 
 int main()
 {
     node *root = buildTree();
-    print(root);
+
+    cout << "Preorder: ";
+    printPreorder(root);
+
+    cout << endl;
+
+    cout << "Inorder: ";
+    printInorder(root);
+
+    cout << endl;
+
+    cout << "Preorder: ";
+    printPostorder(root);
+
+    cout << endl;
 }
