@@ -54,6 +54,8 @@ int main()
 
     node *root = buildTree();
 
+    node*target = root->left->left;
+
     int maxLevel = -1;
 
     rightView(root, 0, maxLevel);
