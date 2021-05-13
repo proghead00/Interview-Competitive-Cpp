@@ -1,5 +1,5 @@
-# Competitive Programming in C++ ( ͝° ͜ʖ͡°)
+# Competitive Programming and Interview Problems in C++ ( ͝° ͜ʖ͡°)
 
 <img src="cp.png" />
 
-## Various competitive problems' solutions done in C++
+ 
