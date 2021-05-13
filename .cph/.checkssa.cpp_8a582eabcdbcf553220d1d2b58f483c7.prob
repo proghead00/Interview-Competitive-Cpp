@@ -1,0 +1,1 @@
+{"name":"Local: checkssa","url":"c:\\Users\\proghead00\\OneDrive\\Desktop\\C++\\checkssa.cpp","tests":[{"id":1620727787320,"input":"coronavirus\n1\nnais","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\proghead00\\OneDrive\\Desktop\\C++\\checkssa.cpp","group":"local","local":true}

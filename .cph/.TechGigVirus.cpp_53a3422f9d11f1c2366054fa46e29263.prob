@@ -1,0 +1,1 @@
+{"name":"Local: TechGigVirus","url":"c:\\Users\\proghead00\\OneDrive\\Desktop\\C++\\TechGigVirus.cpp","tests":[{"id":1620727380781,"input":"coronavirus\n1\nabcde","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\proghead00\\OneDrive\\Desktop\\C++\\TechGigVirus.cpp","group":"local","local":true}
