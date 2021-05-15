@@ -197,10 +197,6 @@ int main()
     root->right = insert(root->right, 6);
     // node *root = buildTree();
 
-    node *root = new node(5);
-    root->left = new node(3);
-    root->right = new node(6);
-
     node *newl = insert(root, 4);
     node *newr = insert(root, 7);
     bfs_lineByline(root);
@@ -208,6 +204,6 @@ int main()
     root = deleteBST2(root, 3);
     bfs_lineByline(root);
 
-    // bool found = search(root, 7);
-    // (found == true) ? cout << "Found" : cout << "Not found";
+    bool found = search(root, 7);
+    (found == true) ? cout << "Found" : cout << "Not found";
 }
