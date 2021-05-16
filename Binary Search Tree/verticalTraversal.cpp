@@ -19,8 +19,8 @@ public:
 
 void vertTrav(node *root)
 {
-    map<int, vector<int>> mp;
-    queue<pair<node *, int>> q;
+    map<int, vector<int>> mp; // keys and values
+    queue<pair<node *, int>> q;  // will have node and hd
 
     q.push({root, 0});
 
@@ -45,7 +45,7 @@ void vertTrav(node *root)
 
     for (auto p : mp)
     {
-        vector<int> v = p.second;
+        vector<int> v = p.second; // taking out the vector contents
 
         for (int x : v)
             cout << x << " ";
