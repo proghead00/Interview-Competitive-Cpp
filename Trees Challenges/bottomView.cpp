@@ -40,7 +40,6 @@ void bottomView(node *root)
 
         else
         {
-
             for (auto p : mp)
             {
                 vector<int> v = p.second;
