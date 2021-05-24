@@ -80,8 +80,8 @@ void bfs_lineByLine(node *root)
 
 int main()
 {
-    int in[] = {3, 2, 8, 4, 1, 6, 7, 5};
-    int pre[] = {1, 2, 3, 4, 8, 5, 6, 7};
+    int in[] = { 4, 2, 1, 7, 5, 8, 3, 6 };
+    int pre[] = { 1, 2, 4, 3, 5, 7, 8, 6 };
     int n = sizeof(in) / sizeof(int);
 
     node *root = buildTreeFromPreIn(in, pre, 0, n - 1);

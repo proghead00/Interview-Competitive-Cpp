@@ -25,6 +25,9 @@ vector<int> zigzag(node *root)
     q.push(root);
     vector<int> ans;
 
+    if (root == NULL)
+        return ans;
+
     int f = 1;
     while (!q.empty())
     {
