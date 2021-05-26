@@ -11,7 +11,6 @@ vector<int> mergeKSortedArrays(vector<vector<int>> arr)
 
     priority_queue<node, vector<node>, greater<node>> pq; // min heap
 
-    // insert 0th element of every array into pq
 
     for (size_t i = 0; i < arr.size(); i++)
     {
