@@ -1,69 +1,39 @@
+
 #include <bits/stdc++.h>
 using namespace std;
 
+ struct compare{
+    bool operator()(pair<int,int>p1, pair<int, int>p2){
+        
+        // second => freq
+        if(p1.second==p2.second)
+            return p1.first > p2.first;
+        return  p1.second < p2.second;
+    }
+};
 
-void kTop(int a[], int n, int k)
+void kFreq(int arr[], int n)
 {
-	// vector of size k+1 to store elements
-	vector<int> top(k + 1);
+    unordered_map<int, int>m;
 
-	//keep track of frequency
-	unordered_map<int, int> freq;
-
-	// iterate till the end of stream
-	for (int m = 0; m < n; m++)
-	{
-		// increase the frequency
-		freq[a[m]]++;
-
-		// store that element in top vector
-		top[k] = a[m];
-
-		// search in top vector for same element
-		auto it = find(top.begin(), top.end() - 1, a[m]);
-
-		// iterate from the position of element to zero
-		for (int i = distance(top.begin(), it) - 1; i >= 0; --i)
-		{
-			// compare the frequency and swap if higher
-			// frequency element is stored next to it
-			if (freq[top[i]] < freq[top[i + 1]])
-				swap(top[i], top[i + 1]);
-
-			// if frequency is same compare the elements
-			// and swap if next element is high
-			else if ((freq[top[i]] == freq[top[i + 1]])
-					&& (top[i] > top[i + 1]))
-				swap(top[i], top[i + 1]);
-			else
-				break;
-		}
-
-		// print top k elements
-		for (int i = 0; i < k && top[i] != 0; ++i)
-			cout << top[i] << ' ';
-	}
-	cout << endl;
+    for (int i = 0; i < n; ++i)
+        m[arr[i]]++;
+    
+    // create pq using unordered_map contents
+    priority_queue<pair<int, int>, vector<pair<int, int>>, compare> pq(m. begin(), m.end());
+    
+    int k = 1;
+    for (int i = 0; i < k; ++i)
+    {
+        cout << pq.top().first << " ";
+        pq.pop();
+    }
 }
 
-// Driver program to test above function
 int main()
 {
-    int t;
-    cin>>t;
-    for(int i=0;i<t;i++)
-    {
-        int n,k;
-        cin>>n>>k;
-        int arr[n];
-        for(int j=0;j<n;j++)
-        cin>>arr[j];
-        kTop(arr, n, k);
-    }
-	/*int k = 4;
-	//int arr[] = { 5, 2, 1, 3, 2 };
-	int arr[] = { 5, 1, 3, 5, 2, 1, 1, 3 };
-	int n = sizeof(arr)/sizeof(arr[0]);
-	kTop(arr, n, k);
-	return 0;*/
+    int arr[] = {2,34,5,3,3,43,3};
+
+    kFreq(arr, 7);
+
 }

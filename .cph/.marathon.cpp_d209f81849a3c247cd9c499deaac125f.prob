@@ -1,0 +1,1 @@
+{"name":"Local: marathon","url":"c:\\Users\\proghead00\\OneDrive\\Desktop\\C++\\marathon.cpp","tests":[{"id":1621787316500,"input":"3\n1 1 1 2 3\n0 1 1 2 3\n10 3 1 2 3","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\proghead00\\OneDrive\\Desktop\\C++\\marathon.cpp","group":"local","local":true}
