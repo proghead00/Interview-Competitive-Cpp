@@ -2,14 +2,14 @@
 #include <unordered_map>
 using namespace std;
 
-int longestSubarrayWithGivenSum(int arr[], int n) {
+int longestSubarrayWithGivenSum(int arr[], int n, int k) {
 	unordered_map<int, int> m;
 	int pre = 0, len = 0;
 
 	for (int i = 0; i < n; i++) {
 		pre += arr[i];
 
-		if (pre == 0)
+		if (pre == k)
 		{
 			len = max(len, i + 1);
 		}
@@ -39,8 +39,9 @@ int main() {
 	for (int i = 0; i < n; i++)
 		cin >> arr[i];
 
-	int k = 4;
-	cout << longestSubarrayWithGivenSum(arr, n) << " ";
+	int k;
+	cin >> k;
+	cout << longestSubarrayWithGivenSum(arr, n, k) << " ";
 
 
 }
