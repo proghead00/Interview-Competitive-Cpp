@@ -3,6 +3,21 @@
 using namespace std;
 
 int longestSubarrayWithGivenSum(int arr[], int n, int k) {
+<<<<<<< HEAD
+=======
+
+
+	unordered_map<int, int> m;
+	int pre = 0, len = 0;
+
+	for (int i = 0; i < n; i++) {
+		pre += arr[i];
+
+		if (pre == k)
+		{
+			len = max(len, i + 1);
+		}
+>>>>>>> 29afa652e0ff15855fc19c2d6c9752b41279f05c
 
 	int longestSubarrayWithZeroSum(int arr[], int n) {
 		unordered_map<int, int> m;
