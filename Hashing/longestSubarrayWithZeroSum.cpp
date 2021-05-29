@@ -2,7 +2,7 @@
 #include <unordered_map>
 using namespace std;
 
-int longestSubarrayWithGivenSum(int arr[], int n) {
+int longestSubarrayWithZeroSum(int arr[], int n) {
 	unordered_map<int, int> m;
 	int pre = 0, len = 0;
 
