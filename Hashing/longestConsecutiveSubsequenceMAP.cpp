@@ -2,7 +2,7 @@
 #include <unordered_map>
 using namespace std;
 
-// O(N)
+
 int largestSequence(int arr[], int n) {
 	unordered_map<int, int> m; // value mapping to streak length
 

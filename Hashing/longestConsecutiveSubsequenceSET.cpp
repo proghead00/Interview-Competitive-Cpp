@@ -1,7 +1,7 @@
 #include <iostream>
 #include <unordered_set>
 using namespace std;
-
+// O(N)
 int longestConsecutive(int a[], int n) {
 	unordered_set<int> s;
 
