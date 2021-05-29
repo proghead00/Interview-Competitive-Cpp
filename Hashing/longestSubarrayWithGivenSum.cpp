@@ -2,11 +2,9 @@
 #include <unordered_map>
 using namespace std;
 
-<<<<<<< HEAD:Hashing/longestSubarrayWithGivenSum.cpp
 int longestSubarrayWithGivenSum(int arr[], int n, int k) {
-=======
-int longestSubarrayWithZeroSum(int arr[], int n) {
->>>>>>> 265cef4548c3962a772e386471e47116373326b1:Hashing/longestSubarrayWithZeroSum.cpp
+
+
 	unordered_map<int, int> m;
 	int pre = 0, len = 0;
 
