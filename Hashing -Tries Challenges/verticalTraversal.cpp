@@ -1,7 +1,6 @@
 #include <iostream>
 #include <map>
 #include <vector>
-using namespace std;
 
 class node {
 public:
@@ -28,6 +27,8 @@ void verticalTrav(node*root, map<int, vector<int>>&m,  int hd) {
 }
 
 int main() {
+
+
 	node*root = new node(1);
 	root->left = new node(2);
 	root->right = new node(3);

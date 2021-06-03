@@ -64,8 +64,8 @@ string window(string s, string pat) {
 
 
 int main() {
-	string s = "hllloeaeo world";
-	string p = "eelo";
+	string s = "qwerty asdfgh qazxsw";
+	string p = "qas";
 
 	cout << window(s, p);
 
