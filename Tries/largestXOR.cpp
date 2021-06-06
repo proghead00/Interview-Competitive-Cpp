@@ -1,116 +1,101 @@
 #include <iostream>
 using namespace std;
 
-class node
-{
+class node {
 public:
-    // if the left ptr is not NULL -> we have a zero
-    // if the right ptr is not NULL -> we have a one in the right
-    node *left;  // 0
-    node *right; // 1
+    // left stores 0, right stores 1
+    node*left;
+    node*right;
+
 };
 
-class trie
-{
-    node *root;
-
+class trie {
+    node*root;
 public:
-    trie()
-    {
+    trie() {
         root = new node();
     }
 
-    void insert(int n)
-    {
-        // insert bits of the number in the trie (32 bits)
+    void insert(int n) {
+        node*temp = root;
+        for (int i = 31; i >= 0; i--) {
 
-        node *temp = root;
-        // i starts with the MSB
-        for (int i = 31; i >= 0; i--)
-        {
-            int bit = (n >> i) & 1; // extracting each bit from left (i.e from MSB)
+            // extracting i-th bit and checking whether it's set or unset
+            int bit = (n >> i) & 1;
 
-            if (bit == 0)
-            {
+            if (bit == 0) {
                 if (temp->left == NULL)
-                {
                     temp->left = new node();
-                }
 
-                // go to that node everytime
                 temp = temp->left;
             }
-            else
-            {
+
+            else {
                 if (temp->right == NULL)
                     temp->right = new node();
+
                 temp = temp->right;
             }
         }
     }
 
-    int max_XOR_helper(int value)
-    {
-        int currentAns = 0;
-        node *temp = root;
+    int helper(int value) {
+        node*temp = root;
+        int curr_ans = 0;
+        for (int j = 31; j >= 0; j--) {
 
-        // will look for 0 if we have 1 in the curr bit and vice versa
-        for (int j = 31; j >= 0; j--)
-        {
             int bit = (value >> j) & 1;
 
-            if (bit == 0)
-            {
-
-                // find the opposite value
-                if (temp->right != NULL)
-                {
+            if (bit == 0) {
+                if (temp->right) {
                     temp = temp->right;
-                    currentAns += (1 << j); // power(2,j)
+                    curr_ans += (1 << j); //2 to the power j
                 }
-                else
-                {
-                    temp = temp->left;
-                }
+                else temp = temp->left;
             }
 
-            else // if the curr bit is 1 -> look for a zero
-            {
-                if (temp->left != NULL)
-                {
-                    temp = temp->left;
-                    currentAns += (1 << j);
+            else {
+                if (temp->left)
+                {   temp = temp->left;
+                    curr_ans += (1 << j);
                 }
-                else // if there's no zero
-                {
-                    temp = temp->right;
-                }
-            }
 
-            return currentAns;
+                else temp = temp->right;
+
+            }
         }
+        return curr_ans;
     }
 
-    int max_XOR(int *input, int n)
-    {
+    int max_xor(int *arr, int n) {
         int max_xor = 0;
 
-        for (int i = 0; i < n; i++)
-        {
-            int value = input[i];
-            insert(value);
-            int curr_xor = max_XOR_helper(value);
-            max_xor = max(curr_xor, max_xor);
+        for (int i = 0; i < n; i++) {
+            int val = arr[i];
+            // insert the value in the trie:
+            insert(val);
+            int curr_xor = helper(val);
+
+            max_xor = max(max_xor, curr_xor);
         }
+
         return max_xor;
     }
+
 };
 
-int main()
-{
-    int input[] = {3, 10, 5, 25, 9, 2};
-    int n = sizeof(input) / sizeof(int);
+int main() {
+#ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+#endif
+    int n;
+    cin >> n;
+
+    int arr[n];
+    for (int i = 0; i < n; i++) cin >> arr[i];
 
     trie t;
-    cout << t.max_XOR(input, n) << endl;
+    cout << t.max_xor(arr, n) << endl;
+
 }
