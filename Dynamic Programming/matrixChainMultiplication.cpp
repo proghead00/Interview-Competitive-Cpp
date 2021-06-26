@@ -21,8 +21,8 @@ int matrixChain_topDown(int m[], int i, int j) {
 		ans = min(ans, temp);
 	}
 
-	tdp[i][j] = ans;
-	return ans;
+
+	return tdp[i][j] = ans;
 }
 
 // bottom up
@@ -54,7 +54,7 @@ int main() {
 	freopen("input.txt", "r", stdin);
 	freopen("output.txt", "w", stdout);
 #endif
-	int matrices[] = {1, 2, 3, 4};
+	int matrices[] = {1, 2, 3, 4}; // dimensions
 
 	int n = sizeof(matrices) / sizeof(int);
 	memset(tdp, -1, sizeof tdp);
