@@ -28,6 +28,7 @@ int ceilIdx(int tail[], int n, int x) {
 	auto it = upper_bound(tail, tail + n, x);
 	return (it - tail);
 }
+
 //O(nlogn)
 int LIS2(int arr[], int n) {
 	int tail[n], len = 1;
