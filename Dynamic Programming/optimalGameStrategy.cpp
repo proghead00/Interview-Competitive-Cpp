@@ -31,33 +31,18 @@ using namespace std;
 #define w(x)            		int x; cin>>x; while(x--)
 mt19937                 		rng(chrono::steady_clock::now().time_since_epoch().count());
 
-ll arr[1000];
-ll dp[1000][1000];
+int arr[1000];
+int dp[1000][1000];
 
-
-ll csum(int s, int e) {
-	ll ans = 0;
-
-	fr(s, e + 1) {
-		ans += arr[i];
-		ans %= 100;
-	}
-	return ans;
-}
-
-ll mx(int i, int j) {
-	if (i >= j) return 0;
+optimal(int i, int j) {
+	if (i > j) return 0;
 
 	if (dp[i][j] != -1) return dp[i][j];
 
-	dp[i][j] = INT_MAX;
+	int x = arr[i] + min(optimal(i + 2, j), optimal(i + 1, j - 1));
+	int y = arr[j] + min(optimal(i, j - 2), optimal(i + 1, j - 1));
 
-	fr2(k, i, j + 1, 1) {
-		dp[i][j] = min(dp[i][j], mx(i, k) + mx(k + 1, j) + csum(i, k) * csum(k + 1, j));
-	}
-
-	return dp[i][j];
-
+	return dp[i][j] = max(x, y);
 }
 
 void solve()
@@ -69,21 +54,13 @@ void solve()
 #endif
 
 	//code:
+	read(n);
+	fr(0, n) cin >> arr[i];
 
-	int n;
+	memset(dp, -1, sizeof dp);
 
-	// no of test cases is not given, therefore read till end of line
-	while ((scanf("%d", &n)) != EOF) {
-		fr(0, n) cin >> arr[i];
+	cout << optimal(0, n - 1);
 
-		memset(dp, -1, sizeof(dp));
-		// fr2(i, 0, n + 1, 1) {
-		// 	fr2(j, 0, n + 1, 1) {
-		// 		dp[i][j] = -1;
-		// 	}
-		// }
-		cout << mx(0, n - 1) << endl;
-	}
 }
 
 int32_t main()
