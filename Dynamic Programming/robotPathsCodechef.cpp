@@ -31,37 +31,53 @@ using namespace std;
 #define w(x)            		int x; cin>>x; while(x--)
 mt19937                 		rng(chrono::steady_clock::now().time_since_epoch().count());
 
-ll arr[1000];
-ll dp[1000][1000];
 
+int dp[1001][1001];
 
-ll csum(int s, int e) {
-	ll ans = 0;
+int noOfWays(int R, int C) {
 
-	fr(s, e + 1) {
-		ans += arr[i];
-		ans %= 100;
-	}
-	return ans;
-}
+	if (dp[0][0] == -1) return 0;
 
-ll mx(int i, int j) {
-	if (i >= j) return 0;
+	// no of ways for first row
+	fr(0, C) {
+		if (dp[0][i] == -1) break;
 
-	if (dp[i][j] != -1) return dp[i][j];
-
-	dp[i][j] = INT_MAX;
-
-	fr2(k, i, j + 1, 1) {
-		dp[i][j] = min(dp[i][j], mx(i, k) + mx(k + 1, j) + csum(i, k) * csum(k + 1, j));
+		dp[0][i] = 1;
 	}
 
-	return dp[i][j];
+	// for cols
+	fr(0, C) {
+		if (dp[i][0] == -1) break;
+		dp[i][0] = 1;
+	}
+
+	// bottom up
+	fr2(i, 1, R, 1) {
+		fr2(j, 1, C, 1) {
+
+			if (dp[i][j] == -1) continue;
+
+			dp[i][j] = 0;
+
+			if (dp[i][j - 1] != -1) {
+				dp[i][j] = dp[i][j - 1] % mod;
+			}
+
+			if (dp[i - 1][j] != -1) {
+				dp[i][j] = (dp[i][j] + dp[i - 1][j]) % mod;
+			}
+
+		}
+	}
+	// check for final cell, if it's blocked
+	if (dp[R - 1][C - 1] == -1) return 0;
+
+	return dp[R - 1][C - 1];
 
 }
 
-void solve()
-{
+void solve() {
+
 	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 #ifndef ONLINE_JUDGE
 	freopen("input.txt", "r", stdin);
@@ -70,24 +86,25 @@ void solve()
 
 	//code:
 
-	int n;
+	memset(dp, 0, sizeof dp);
 
-	// no of test cases is not given, therefore read till end of line
-	while (cin >> n) {
-		fr(0, n) cin >> arr[i];
+	int m, n, p; // rows, cols, blocks
+	cin >> m >> n >> p;
 
-		// memset(dp, -1, sizeof(dp));
-		fr2(i, 0, n + 1, 1) {
-			fr2(j, 0, n + 1, 1) {
-				dp[i][j] = -1;
-			}
-		}
-		cout << mx(0, n - 1) << endl;
+	fr(0, p) {
+		read(x);
+		read(y);
+
+		// mark all blocked cells as -1
+		dp[x - 1][y - 1] = -1;
+
 	}
+
+	cout << noOfWays(m, n) << endl;
 }
 
-int32_t main()
-{
+int32_t main() {
+
 	solve();
 	return 0;
 }
