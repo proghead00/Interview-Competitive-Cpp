@@ -15,7 +15,7 @@ int LIS1(int arr[], int n) {
 		}
 	}
 
-	// either this --> cout << *max_element(lis, lis + n);
+	// either this:  cout << *max_element(lis, lis + n);
 	// or:
 	int res = lis[0];
 	for (int i = 0; i < n; ++i) {
@@ -24,6 +24,7 @@ int LIS1(int arr[], int n) {
 	return res;
 }
 
+// -----------------------------------------------------------------------------
 int ceilIdx(int tail[], int n, int x) {
 	auto it = upper_bound(tail, tail + n, x);
 	return (it - tail);
