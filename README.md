@@ -1,4 +1,5 @@
-# Interview Problems in C++ ( ͝° ͜ʖ͡°)
+# Interview/ Competitive Programming problems in C++ (ง'̀-'́)ง
+ 
 
 <img src="interv.png" />
 
