@@ -25,7 +25,10 @@ public:
 		}
 	}
 
-	void dfsHelper(T node, map<T, bool> &visited, list<T> &output_ordering) {
+// -------------------------------------------------------------------------------------------------------------------
+
+	// WITH DFS:
+	void dfsHelper(T node, map<T, bool>&visited, list<T> &output_ordering) {
 		visited[node] = true;
 
 		for (T nbr : adjList[node]) {
@@ -40,7 +43,7 @@ public:
 		output_ordering.push_front(node);
 	}
 
-	void topologicalSort() {
+	void topologicalSort__DFS() {
 		map<T, bool> visited;
 		list<T> output_ordering;
 
@@ -57,6 +60,54 @@ public:
 			cout << element << " --> ";
 		}
 
+	}
+
+
+
+// -------------------------------------------------------------------------------------------------------------------
+
+	// WITH BFS => KAHN'S ALGORITHM:
+
+	void topologicalSort__BFS() {
+		queue<T> q;
+		map<T, bool> visited;
+		map<T, int> indegree;
+
+		for (auto p : adjList) {
+			// p => pair(node, list)
+			T node = p.first;
+			visited[node] = false;
+			indegree[node] = 0;
+		}
+
+		for (auto p : adjList) {
+			T x = p.first;
+
+			// increase indegree when there's an edge:
+			for (T y : adjList[x]) indegree[y]++;
+		}
+
+		// find out all the nodes with 0 indegree
+		for (auto p : adjList) {
+			T node = p.first;
+
+			if (indegree[node] == 0)
+				q.push(node);
+		}
+
+		while (!q.empty()) {
+			T node = q.front();
+			q.pop();
+			cout << node << " --> ";
+
+			for (T nbr : adjList[node]) {
+				indegree[nbr]--;
+
+				if (indegree[nbr] == 0)
+					q.push(nbr);
+
+			}
+		}
 	}
 };
 
@@ -84,5 +135,6 @@ int main() {
 
 	g.print();
 	cout << endl;
-	g.topologicalSort();
+	g.topologicalSort__BFS();
 }
+// Maths --> English --> Programming Logic --> Java --> Python --> HTML --> CSS --> JS --> Web Dev -->
