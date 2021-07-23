@@ -68,6 +68,9 @@ public:
 };
 
 int main() {
+
+	// For SPOJ MST:
+
 	int n, m;
 	cin >> n >> m;
 

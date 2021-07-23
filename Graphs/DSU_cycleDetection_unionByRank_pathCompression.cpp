@@ -11,7 +11,7 @@ public:
 	}
 
 	void addEdge(int u, int v) {
-		edgeList.push_back(make_pair(u, v));
+		edgeList.push_back({u, v});
 	}
 
 	int findSet(int node, int parent[]) {
@@ -29,17 +29,17 @@ public:
 
 		// Union by Rank:
 
-		// if (s1 != s2) {
-		if (rank[s1] < rank[s2]) {
-			parent[s1] = s2;
-			rank[s2] += rank[s1]; // thus, rank of THAT LEADER becomes the size of that set
-		}
-		else {
-			parent[s2] = s1;
-			rank[s1] += rank[s2];
+		if (s1 != s2) {
+			if (rank[s1] < rank[s2]) {
+				parent[s1] = s2;
+				rank[s2] += rank[s1]; // thus, rank of THAT LEADER becomes the size of that set
+			}
+			else {
+				parent[s2] = s1;
+				rank[s1] += rank[s2];
+			}
 		}
 	}
-	// }
 
 
 	bool containsCycle() {
