@@ -9,7 +9,7 @@ int dp[1 << n][n];
 
 
 // adj matrix:
-int dist[10][10] = {
+int adjMatrix[1 << n][n] = {
 	{0, 20, 42, 25},
 	{20, 0, 30, 34},
 	{42, 30, 0, 10},
@@ -25,7 +25,7 @@ int tsp(int mask, int currCity) {
 	// if all cities have been visited:
 	if (mask == visitedALL) {
 		// return cost from curr city to the src one (0th)
-		return dist[currCity][0];
+		return adjMatrix[currCity][0];
 	}
 
 	if (dp[mask][currCity] != -1)
@@ -37,7 +37,7 @@ int tsp(int mask, int currCity) {
 
 		// check if currCity is visited or not
 		if ((mask & (1 << choice)) == 0) {
-			int subprob = dist[currCity][choice] + tsp(mask | (1 << choice), choice);
+			int subprob = adjMatrix[currCity][choice] + tsp(mask | (1 << choice), choice);
 			ans = min(ans, subprob);
 		}
 	}
@@ -59,3 +59,4 @@ int main() {
 	cout << tsp(1, 0); // INITIALLY, mask = 0001 || currCity = 0 (src)
 
 }
+
