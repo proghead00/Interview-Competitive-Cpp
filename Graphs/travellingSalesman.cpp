@@ -42,7 +42,6 @@ int tsp(int mask, int currCity) {
 		}
 	}
 
-
 	return dp[mask][currCity] = ans;
 }
 
