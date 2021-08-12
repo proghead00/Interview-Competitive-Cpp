@@ -110,7 +110,7 @@ void solve() {
 		cout << i << " --> " << color[i] << endl;
 	}
 
-	cout << "Total no. of Strongly Connected comp: " << --comp << endl;
+	cout << "Total no. of Strongly Connected Components: " << --comp << endl;
 
 }
 
