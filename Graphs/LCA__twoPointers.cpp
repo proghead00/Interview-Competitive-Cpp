@@ -43,13 +43,6 @@ mt19937                     rng(chrono::steady_clock::now().time_since_epoch().c
 const int N = 1e5;
 vi gr[N];
 int depth[N], Par[N];
-// ----------------------
-
-const int NN  = 1e5, MM = 20; // MM => log(NN)
-int sparseTable[NN][MM];
-
-// IN SPARSE TABLE:
-// first col: 2^0 = 1st parent; second col: 2^2 = 4th parent...
 
 // -------------------------------------------------------------------------------------------------------
 
@@ -65,23 +58,6 @@ void dfs__1(int cur, int par) {
 }
 
 
-void dfs__2(int cur, int par) {
-
-	sparseTable[cur][0] = par;
-
-	depth[cur] = depth[par] + 1; // since initially it'd be set to 0 (since it's declared globally)
-
-	fr2(j, 1, MM, 1) {
-		sparseTable[cur][j] = sparseTable[sparseTable[cur][j - 1]][j - 1];
-	}
-
-	for (auto x : gr[cur]) {
-		if (x != par) dfs__2(x, cur);
-	}
-}
-
-
-// ----------------------------------------------------------------------
 int lca__twoPointers(int u, int v) {
 	if (u == v) return u;
 
@@ -104,39 +80,6 @@ int lca__twoPointers(int u, int v) {
 	return u;
 }
 
-
-int lca__binaryLifting(int u, int v) {
-	if (u == v) return u;
-	if (depth[u] < depth[v]) swap(u, v);
-	// now, depth of u is always more than that of v => to create a consistency algorithm
-
-	int diff  = depth[u] - depth[v];
-
-	for (int j = MM - 1; j >= 0; j--) {
-		if ((diff >> j) & 1) {
-			// jth bit of diff is set
-			// 10 => 1010 => 2^3 + 2^1 = 10
-
-			u = sparseTable[u][j];
-		}
-	}
-
-	// u and v are at the same level now
-	for (int j = MM - 1; j >= 0; j--) {
-		if (sparseTable[u][j] != sparseTable[v][j]) {
-			u = sparseTable[u][j];
-			v = sparseTable[v][j];
-		}
-	}
-
-	return sparseTable[u][0];
-}
-
-int lengthFromUtoV(int u, int v) {
-	int lca = lca__binaryLifting(u, v);
-
-	return depth[u] + depth[v] - 2 * depth[lca];
-}
 void solve() {
 
 	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
