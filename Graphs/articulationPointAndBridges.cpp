@@ -40,24 +40,48 @@ mt19937                     rng(chrono::steady_clock::now().time_since_epoch().c
 
 const int N = 1e5;
 vi gr[N];
+int disc[N], low[N], tme;
+set<int> arti_pt;
+vp bridge; // pair --> (cur->child) forming a bridge
 
-int vis[N], disc[N], low[N], time = 1;
 
-void dfs(int curr, int par) {
-	vis[curr] = 1;
-	disc[curr] = low[curr] = time;
-	time++;
+void dfs(int cur, int par) {
 
-	for (auto x : gr[cur]]) {
+	disc[cur] = low[cur] = tme;
+	tme++;
 
-		if (!vis[x]) {
-			dfs(x, curr);
-			low[curr] = min(low[curr], low[x]);
+	int numOfChildren = 0;
+
+	for (auto x : gr[cur]) {
+
+		// NO NEED TO MAKE A VISITED ARRAY
+		// IF disc HAS 0, IT AIN'T DISCOVERED
+		if (!disc[x]) {
+			dfs(x, cur);
+
+			numOfChildren++;
+
+			low[cur] = min(low[cur], low[x]);
+
+			// art pt: for non root nodes
+			if (par != 0 and low[x] >= disc[cur]) {
+				arti_pt.insert(cur);
+			}
+
+			// bridge
+			if (low[x] > disc[cur])
+				bridge.pb({cur, x});
 		}
-		else if (x != par) {
 
+		else if (x != par) {
+			low[cur] = min(low[cur], disc[x]);
 		}
 	}
+
+	// case for root to be an arti point
+	if (par == 0 and numOfChildren > 1)	arti_pt.insert(cur);
+
+	return;
 }
 
 void solve() {
@@ -78,8 +102,11 @@ void solve() {
 		gr[x].pb(y);
 		gr[y].pb(x);
 	}
-
+	tme = 1;
 	dfs(1, 0);
+
+	for (auto x : arti_pt) cout << x << " " ;
+
 
 }
 
