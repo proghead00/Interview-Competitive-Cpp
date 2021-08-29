@@ -1,5 +1,3 @@
-<snippet>
-    <content><![CDATA[
 #include <bits/stdc++.h>
 // #include <ext/pb_ds/assoc_container.hpp>
 // using namespace __gnu_pbds;
@@ -62,9 +60,3 @@ int32_t main() {
 
     return 0;
 }
-]]></content>
-    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
-    <tabTrigger>incc</tabTrigger>
-    <!-- Optional: Set a scope to limit where the snippet will trigger -->
-    <scope>source.c++</scope>
-</snippet>
