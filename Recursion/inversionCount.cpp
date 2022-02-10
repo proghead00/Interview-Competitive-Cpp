@@ -3,7 +3,7 @@ using namespace std;
 
 int merge(int *a, int s, int e)
 {
-    int mid = s + (s + e) / 2;
+    int mid = (s + e) / 2;
     int i = s;
     int j = mid + 1;
 
