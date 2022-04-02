@@ -2,19 +2,16 @@
 #include <unordered_map>
 using namespace std;
 
-
 class Node {
 public:
 	char data;
 	unordered_map<char, Node*> mp;
-	bool isTerminal;
 
 	int endsWith = 0;
-	int prefix = 0;
+	int cntPrefix = 0;
 
 	Node(char d) {
 		data = d;
-		isTerminal = false;
 	}
 };
 
@@ -38,12 +35,11 @@ public:
 				temp->mp[w] = n;
 			}
 			temp = temp->mp[w];
-			temp->prefix++;
+			temp->cntPrefix++;
 
 		}
 
 		temp->endsWith++;
-		temp->isTerminal = true;
 
 	}
 
@@ -73,7 +69,7 @@ public:
 
 		}
 
-		return temp->prefix;
+		return temp->cntPrefix;
 	}
 
 	void erase(string &word) {
@@ -82,7 +78,7 @@ public:
 		for (char w : word) {
 			if (temp->mp.count(w)) {
 				temp = temp->mp[w];
-				temp->prefix--;
+				temp->cntPrefix--;
 			}
 			else return;
 		}
@@ -106,6 +102,6 @@ int main() {
 	while (q--) {
 
 		cin >> searchWord;
-		cout << t.countWordsEqualTo(searchWord);
+		cout << t.countWordsStartingWith(searchWord);
 	}
 }
