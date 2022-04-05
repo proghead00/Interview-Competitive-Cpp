@@ -69,6 +69,6 @@ public:
 int main() {
 	vector<string> words = {"ab", "bc"};
 	Trie t;
-	cout << t.completeString(4, words);
+	cout << t.completeString(2, words);
 	return 0;
 }
