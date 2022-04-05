@@ -64,3 +64,11 @@ public:
 		return res;
 	}
 };
+
+
+int main() {
+	vector<string> words = {"ab", "bc"};
+	Trie t;
+	cout << t.completeString(4, words);
+	return 0;
+}
