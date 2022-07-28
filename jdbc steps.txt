@@ -1,0 +1,12 @@
+1. oracle 21xe
+2. jdk (latest)
+3. ojdbc
+4. PATHS: 
+	USER VAR:	
+	1. CLASSPATH --> C:\Users\Asus\Downloads\ojdbc11.jar;.;
+	2. Path: New --> C:\Program Files\Java\jdk-18.0.2\bin
+	
+	3. SYS VAR:
+		JAVA_HOME --> C:\Program Files\Java\jdk-18.0.2
+
+5. check.java --> javac check.java --> java check ||| sqlplus create and stuff
